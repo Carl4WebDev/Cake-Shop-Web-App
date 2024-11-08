@@ -12,6 +12,6 @@ namespace BakeryStoreMVC.Services
         }
 
         public DbSet<Product>Product {  get; set; }
-
+        public object Products { get; internal set; }
     }
 }
