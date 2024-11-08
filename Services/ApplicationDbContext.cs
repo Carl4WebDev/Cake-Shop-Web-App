@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BakeryStoreMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BakeryStoreMVC.Services
 {
@@ -7,6 +8,10 @@ namespace BakeryStoreMVC.Services
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
+
         }
+
+        public DbSet<Product>Product {  get; set; }
+
     }
 }
