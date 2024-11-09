@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BakeryStoreMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+779adb96fa02b0a8cebf08c32f115439ac2db36a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdf35d91ab8b3282a436eb25be4b0df6a40f21e0")]
 [assembly: System.Reflection.AssemblyProductAttribute("BakeryStoreMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BakeryStoreMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

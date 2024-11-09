@@ -14,7 +14,7 @@ namespace BakeryStoreMVC.Controllers
 
         public IActionResult Index()
         {
-            var products = context.Product.ToList();
+            var products = context.Product.OrderByDescending(p => p.Id).ToList();
             return View(products);
         }
     }
