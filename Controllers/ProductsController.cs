@@ -17,5 +17,9 @@ namespace BakeryStoreMVC.Controllers
             var products = context.Product.OrderByDescending(p => p.Id).ToList();
             return View(products);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
