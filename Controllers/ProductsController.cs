@@ -67,5 +67,31 @@ namespace BakeryStoreMVC.Controllers
 
             return RedirectToAction("index", "Products");
 		}
+
+		public IActionResult Edit(int id)
+		{
+			var product = context.Product.Find(id);
+			if (product == null)
+			{
+				return RedirectToAction("Index", "Products");
+			}
+
+			//Create prodcutDto from product
+			var productDto = new ProductDto()
+			{
+				Name = product.Name,
+				Brand = product.Brand,
+				Category = product.Category,
+				Price = product.Price,
+				Description = product.Description,
+
+			};
+
+
+			ViewData["ProductId"] = product.Id;
+			ViewData["ImageFileName"] = product.ImageFileName;
+			ViewData["CreatedAt"] = product.CreatedAt.ToString("MM/dd/yyyy");
+			return View(productDto);
+		}
 	}
 }
