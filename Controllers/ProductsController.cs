@@ -93,5 +93,55 @@ namespace BakeryStoreMVC.Controllers
 			ViewData["CreatedAt"] = product.CreatedAt.ToString("MM/dd/yyyy");
 			return View(productDto);
 		}
-	}
+
+		[HttpPost]
+        public IActionResult Edit(int id, ProductDto productDto)
+		{
+			var product = context.Product.Find(id);
+
+			if(product == null)
+			{
+				return RedirectToAction("index", "Products");
+			}
+
+			if (!ModelState.IsValid)
+			{
+				ViewData["ProductID"] = product.Id;
+				ViewData["ImageFileName"] = product.ImageFileName;
+				ViewData["CreatedAt"] = product.CreatedAt.ToString("MM/dd/yyyy");
+
+				return View(productDto);
+			}
+
+			//update the image file if we have a new image file
+			string newFileName = product.ImageFileName;
+			if(productDto.ImageFile != null)
+			{
+				newFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+				newFileName += Path.GetExtension(productDto.ImageFile.FileName);
+
+				string imageFullPath = environment.WebRootPath + "/products/" + newFileName;
+				using (var stream = System.IO.File.Create(imageFullPath))
+				{
+					productDto.ImageFile.CopyTo(stream);
+				}
+			}
+
+			//delete the old image
+			string oldImageFullPath = environment.WebRootPath + "/products/" + product.ImageFileName;
+			System.IO.File.Delete(oldImageFullPath);
+
+			//update the product in the database
+			product.Name = productDto.Name;
+			product.Brand = productDto.Brand;
+			product.Category = productDto.Category;
+			product.Price = productDto.Price;
+			product.Description = productDto.Description;
+			product.ImageFileName = newFileName;
+
+			context.SaveChanges();
+			return RedirectToAction("index", "Products");
+		}
+
+    }
 }
