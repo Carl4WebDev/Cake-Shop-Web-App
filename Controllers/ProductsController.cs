@@ -8,6 +8,7 @@ namespace BakeryStoreMVC.Controllers
     {
         private readonly ApplicationDbContext context;
 		private readonly IWebHostEnvironment environment;
+		private readonly int pageSize = 5;
 
 		public ProductsController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
@@ -15,10 +16,28 @@ namespace BakeryStoreMVC.Controllers
 			this.environment = environment;
 		}
 
-        public IActionResult Index()
+        public IActionResult Index(int pageIndex)
         {
-            var products = context.Product.OrderByDescending(p => p.Id).ToList();
-            return View(products);
+			IQueryable<Product> query = context.Product;
+
+			query = query.OrderByDescending(p => p.Id);
+
+			//pagination functionality
+			if(pageIndex < 1)
+			{
+				pageIndex = 1;
+			} 
+
+			decimal count = query.Count();
+			int totalPages = (int)Math.Ceiling(count / pageSize);
+			query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
+            var products = query.ToList();
+
+			ViewData["PageIndex"] = pageIndex;
+			ViewData["TotalPages"] = totalPages;
+            
+			return View(products);
         }
         public IActionResult Create()
         {
