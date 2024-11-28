@@ -48,7 +48,7 @@
 					asp-route-id="@product.Id">Edit</a>
 
 					<a class="btn btn-danger btn-sm" asp-controller="Products" asp-action="Delete"
-					   asp-route-id="@product.Id">Delete</a>
+					   asp-route-id="@product.Id" onclick="return confirm('Are you sure?')">Delete</a>
 				</td>
 			</tr>
 		}

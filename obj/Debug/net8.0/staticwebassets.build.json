@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eAw10g6SeirwX/NyMOw//2eHc816ouf+0nbIPmVxXT0=",
+  "Hash": "LTK4QqQgyP3mv4+8DwxmsM3bxKxCJ2zkwQU0G7H7Ftc=",
   "Source": "BakeryStoreMVC",
   "BasePath": "_content/BakeryStoreMVC",
   "Mode": "Default",
@@ -1423,12 +1423,12 @@
       "OriginalItemSpec": "wwwroot\\products\\20241125091520633.jpg"
     },
     {
-      "Identity": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\20241125091544079.png",
+      "Identity": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\20241128231405137.jpg",
       "SourceId": "BakeryStoreMVC",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\",
       "BasePath": "_content/BakeryStoreMVC",
-      "RelativePath": "products/20241125091544079.png",
+      "RelativePath": "products/20241128231405137.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1439,26 +1439,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\products\\20241125091544079.png"
-    },
-    {
-      "Identity": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\20241125091644621.jpg",
-      "SourceId": "BakeryStoreMVC",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\",
-      "BasePath": "_content/BakeryStoreMVC",
-      "RelativePath": "products/20241125091644621.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\products\\20241125091644621.jpg"
+      "OriginalItemSpec": "wwwroot\\products\\20241128231405137.jpg"
     },
     {
       "Identity": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\22866337.jpg",

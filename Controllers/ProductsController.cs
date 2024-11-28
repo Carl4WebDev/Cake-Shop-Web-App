@@ -143,5 +143,22 @@ namespace BakeryStoreMVC.Controllers
 			return RedirectToAction("index", "Products");
 		}
 
+		public IActionResult Delete(int id)
+		{
+            var product = context.Product.Find(id);
+
+            if (product == null)
+            {
+                return RedirectToAction("index", "Products");
+            }
+
+			string imageFullPath = environment.WebRootPath + "/products/" + product.ImageFileName;
+			System.IO.File.Delete(imageFullPath);
+
+			context.Product.Remove(product);
+			context.SaveChanges(true);
+            return RedirectToAction("index", "Products");
+        }
+
     }
 }
