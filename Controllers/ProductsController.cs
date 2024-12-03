@@ -16,11 +16,17 @@ namespace BakeryStoreMVC.Controllers
 			this.environment = environment;
 		}
 
-        public IActionResult Index(int pageIndex)
+        public IActionResult Index(int pageIndex, string? search)
         {
 			IQueryable<Product> query = context.Product;
 
 			query = query.OrderByDescending(p => p.Id);
+			
+			//search fucntionality
+			if(search != null)
+			{
+				query = query.Where(p => p.Name.Contains(search) || p.Brand.Contains(search));
+			}
 
 			//pagination functionality
 			if(pageIndex < 1)
@@ -36,7 +42,11 @@ namespace BakeryStoreMVC.Controllers
 
 			ViewData["PageIndex"] = pageIndex;
 			ViewData["TotalPages"] = totalPages;
-            
+
+			ViewData["Search"] = search ?? "";
+
+
+
 			return View(products);
         }
         public IActionResult Create()
