@@ -8,7 +8,7 @@ namespace BakeryStoreMVC.Controllers
     {
         private readonly ApplicationDbContext context;
 		private readonly IWebHostEnvironment environment;
-		private readonly int pageSize = 5;
+		private readonly int pageSize = 6;
 
 		public ProductsController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
