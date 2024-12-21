@@ -45,7 +45,7 @@ namespace BakeryStoreMVC.Controllers
 				if (orderBy == "asc")
 				{
 					query = query.OrderBy(p => p.Name);
-				}
+				}  
 				else
 				{
 					query = query.OrderByDescending(p => p.Name);
