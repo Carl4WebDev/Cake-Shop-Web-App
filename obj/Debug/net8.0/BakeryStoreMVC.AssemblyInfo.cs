@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BakeryStoreMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dbb93bdacb2b800de57eb5109b666f80ab26c69")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+711d236dff013a7e11f7493cc38745910546ce13")]
->>>>>>> another-test
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b752ceefbfa4550f7d6a155b8e5cda21981a0dc2")]
 [assembly: System.Reflection.AssemblyProductAttribute("BakeryStoreMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BakeryStoreMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

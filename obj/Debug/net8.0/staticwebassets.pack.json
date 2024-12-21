@@ -253,10 +253,6 @@
       "PackagePath": "staticwebassets\\products\\10744695.jpg"
     },
     {
-      "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\10967363.jpg",
-      "PackagePath": "staticwebassets\\products\\10967363.jpg"
-    },
-    {
       "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\11677601.jpg",
       "PackagePath": "staticwebassets\\products\\11677601.jpg"
     },
@@ -289,8 +285,12 @@
       "PackagePath": "staticwebassets\\products\\20241125091321589.png"
     },
     {
-      "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\20241125091520633.jpg",
-      "PackagePath": "staticwebassets\\products\\20241125091520633.jpg"
+      "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\20241203234721252.PNG",
+      "PackagePath": "staticwebassets\\products\\20241203234721252.PNG"
+    },
+    {
+      "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\20241203234822675.jpg",
+      "PackagePath": "staticwebassets\\products\\20241203234822675.jpg"
     },
     {
       "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\products\\22866337.jpg",
