@@ -13,6 +13,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\images\\desktop.ini",
+      "PackagePath": "staticwebassets\\images\\desktop.ini"
+    },
+    {
+      "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\images\\hero.png",
+      "PackagePath": "staticwebassets\\images\\hero.png"
+    },
+    {
+      "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\images\\icon.png",
+      "PackagePath": "staticwebassets\\images\\icon.png"
+    },
+    {
       "Id": "C:\\Users\\carl\\source\\repos\\BakeryStoreMVC\\BakeryStoreMVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
