@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BakeryStoreMVC.Controllers
 {
+	[Route("/Admin/[controller]/{action=Index}/{id?}")]
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -270,6 +271,7 @@ namespace BakeryStoreMVC.Controllers
 
 			return RedirectToAction("Index", "Products");
 		}
+
 
     }
 }
