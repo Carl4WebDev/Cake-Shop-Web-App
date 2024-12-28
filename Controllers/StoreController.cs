@@ -11,11 +11,42 @@ namespace BakeryStoreMVC.Controllers
         public StoreController(ApplicationDbContext context) {
             this.context = context;
         } 
-        public IActionResult Index(int pageIndex)
+        public IActionResult Index(int pageIndex, string? search, string? brand, string? category, string? sort)
         {
             IQueryable<Product> query = context.Product;
 
-            query = query.OrderByDescending(p=> p.Id);
+            // search functionality
+            if (search != null && search.Length > 0)
+            {
+                query = query.Where(p => p.Name.Contains(search));
+            }
+
+
+            // filter functionality
+            if (brand != null && brand.Length > 0)
+            {
+                query = query.Where(p => p.Brand.Contains(brand));
+            }
+
+            if (category != null && category.Length > 0)
+            {
+                query = query.Where(p => p.Category.Contains(category));
+            }
+
+            // sort functionality
+            if (sort == "price_asc")
+            {
+                query = query.OrderBy(p => p.Price);
+            }
+            else if (sort == "price_desc")
+            {
+                query = query.OrderByDescending(p => p.Price);
+            }
+            else
+            {
+                // newest products first
+                query = query.OrderByDescending(p => p.Id);
+            }
 
             if (pageIndex < 1) {
                 pageIndex = 1;
@@ -30,7 +61,16 @@ namespace BakeryStoreMVC.Controllers
             ViewBag.Products = products;
             ViewBag.PageIndex = pageIndex;
             ViewBag.TotalPages = totalPages;
-            return View();
+            
+            var storeSearchModel = new StoreSearchModel()
+            {
+                Search = search,
+                Brand = brand,
+                Category = category,
+                Sort = sort
+            };
+            
+            return View(storeSearchModel);
         }
     }
 }
