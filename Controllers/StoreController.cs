@@ -72,5 +72,16 @@ namespace BakeryStoreMVC.Controllers
             
             return View(storeSearchModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var product = context.Product.Find(id);
+            if (product == null)
+            {
+                return RedirectToAction("Index", "Store");
+            }
+
+            return View(product);
+        }
     }
 }
