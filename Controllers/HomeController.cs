@@ -1,21 +1,23 @@
 using System.Diagnostics;
 using BakeryStoreMVC.Models;
+using BakeryStoreMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakeryStoreMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            this.context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var products = context.Product.OrderByDescending(p => p.Id).Take(4).ToList();
+            return View(products);
         }
 
         public IActionResult Privacy()
