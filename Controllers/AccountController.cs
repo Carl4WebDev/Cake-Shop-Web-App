@@ -1,5 +1,6 @@
 ﻿using BakeryStoreMVC.Models;
 using BestStoreMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -126,8 +127,22 @@ namespace BakeryStoreMVC.Controllers
             return View(loginDto);
         }
 
+        [Authorize]
+		public IActionResult Profile()
+		{
+
+			return View();
+		}
+		public IActionResult AccessDenied()
+		{
+			return RedirectToAction("Index", "Home");
+		}
 
 
 
-    }
+
+
+
+
+	}
 }

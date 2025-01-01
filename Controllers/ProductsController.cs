@@ -1,9 +1,11 @@
 ﻿using BakeryStoreMVC.Models;
 using BakeryStoreMVC.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakeryStoreMVC.Controllers
 {
+	[Authorize(Roles = "admin")]
 	[Route("/Admin/[controller]/{action=Index}/{id?}")]
     public class ProductsController : Controller
     {
