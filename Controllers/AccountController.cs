@@ -1,7 +1,9 @@
-﻿using BakeryStoreMVC.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using BakeryStoreMVC.Models;
 using BestStoreMVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakeryStoreMVC.Controllers
@@ -234,11 +236,66 @@ namespace BakeryStoreMVC.Controllers
 			return RedirectToAction("Index", "Home");
 		}
 
+		public IActionResult ForgotPassword()
+		{
+			if (signInManager.IsSignedIn(User))
+			{
+				return RedirectToAction("Index", "Home");
+			}
+
+			return View();
+		}
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword([Required, EmailAddress] string email)
+        {
+            if (signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.Email = email;
+
+            if (!ModelState.IsValid)
+            {
+                ViewBag.EmailError = ModelState["email"]?.Errors.First().ErrorMessage ?? "Invalid Email Address";
+                return View();
+            }
+
+            var user = await userManager.FindByEmailAsync(email);
+
+            if (user != null)
+            {
+                // generate password reset token
+                var token = await userManager.GeneratePasswordResetTokenAsync(user);
+                string resetUrl = Url.ActionLink("ResetPassword", "Account", new { token }) ?? "URL Error";
+
+                Console.WriteLine("Password reset link" + resetUrl);
+                //// send url by email
+                //string senderName = configuration["BrevoSettings:SenderName"] ?? "";
+                //string senderEmail = configuration["BrevoSettings:SenderEmail"] ?? "";
+                //string username = user.FirstName + " " + user.LastName;
+                //string subject = "Password Reset";
+                //string message = "Dear " + username + ",\n\n" +
+                //                 "You can reset your password using the following link:\n\n" +
+                //resetUrl + "\n\n" +
+                //"Best Regards";
+
+                //EmailSender.SendEmail(senderName, senderEmail, username, email, subject, message);
+            }
+
+
+            ViewBag.SuccessMessage = "Please check your Email account and click on the Password Reset link!";
+
+            return View();
+        }
 
 
 
 
 
 
-	}
+
+
+    }
 }
