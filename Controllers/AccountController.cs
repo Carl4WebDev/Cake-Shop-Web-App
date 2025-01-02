@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BakeryStoreMVC.Models;
+using BakeryStoreMVC.Services;
 using BestStoreMVC.Models;
+using BestStoreMVC.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -270,18 +272,16 @@ namespace BakeryStoreMVC.Controllers
                 var token = await userManager.GeneratePasswordResetTokenAsync(user);
                 string resetUrl = Url.ActionLink("ResetPassword", "Account", new { token }) ?? "URL Error";
 
-                Console.WriteLine("Password reset link" + resetUrl);
-                //// send url by email
-                //string senderName = configuration["BrevoSettings:SenderName"] ?? "";
-                //string senderEmail = configuration["BrevoSettings:SenderEmail"] ?? "";
-                //string username = user.FirstName + " " + user.LastName;
-                //string subject = "Password Reset";
-                //string message = "Dear " + username + ",\n\n" +
-                //                 "You can reset your password using the following link:\n\n" +
-                //resetUrl + "\n\n" +
-                //"Best Regards";
+                //send url by email
+                string senderName = configuration["BrevoSettings:SenderName"] ?? "";
+                string senderEmail = configuration["BrevoSettings:SenderEmail"] ?? "";
+                string username = user.FirstName + " " + user.LastName;
+                string subject = "Password Reset";
+                string message = "Dear " + username + ",\n\n" +
+                                 "You can reset your password using the following link:\n\n" +
+                resetUrl + "\n\n" +"Best Regards";
 
-                //EmailSender.SendEmail(senderName, senderEmail, username, email, subject, message);
+                EmailSender.SendEmail(senderName, senderEmail, username, email, subject, message);
             }
 
 

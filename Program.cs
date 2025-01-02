@@ -1,5 +1,6 @@
 using BakeryStoreMVC.Models;
 using BakeryStoreMVC.Services;
+using brevo_csharp.Client;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -26,6 +27,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
+
+//Configuration.Default.ApiKey.Add("api-key", builder.Configuration["BrevoSettings:ApiKey"] ?? "");
 
 var app = builder.Build();
 

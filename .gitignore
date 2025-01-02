@@ -1,1 +1,8 @@
 ".vs/" 
+
+# Ignore appsettings.json files
+
+"appsettings.json"
+"appsettings.*.json"
+
+".env""
