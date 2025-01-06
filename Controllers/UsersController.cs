@@ -88,7 +88,7 @@ namespace BestStoreMVC.Controllers
             }
 
             var roleExists = await roleManager.RoleExistsAsync(newRole);
-            var appUser = await userManager.FindByIdAsync(id);
+            var appUser = await userManager.FindByIdAsync(id) ;
 
             if (appUser == null || !roleExists)
             {
