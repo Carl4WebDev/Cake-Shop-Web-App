@@ -1,4 +1,5 @@
 ﻿using BakeryStoreMVC.Models;
+using BestStoreMVC.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ namespace BakeryStoreMVC.Services
         }
 
         public DbSet<Product>Product {  get; set; }
-        public object Products { get; internal set; }
+        public DbSet<Order> Orders { get; set; }
+        //public object Products { get; internal set; }
     }
 }
