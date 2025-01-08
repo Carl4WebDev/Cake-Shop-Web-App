@@ -99,6 +99,7 @@
 
 <nav>
     <ul class="pagination">
+
         @for (int i = 1; i <= ViewBag.TotalPages; i++)
         {
             string active = "";
@@ -108,5 +109,6 @@
                 <a class="page-link" asp-route-pageIndex=@i>@i</a>
             </li>
         }
+
     </ul>
 </nav>
