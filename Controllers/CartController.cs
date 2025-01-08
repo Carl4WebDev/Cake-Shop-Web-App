@@ -37,121 +37,121 @@ namespace BestStoreMVC.Controllers
         }
 
 
-        //[Authorize]
-        //[HttpPost]
-        //public IActionResult Index(CheckoutDto model)
-        //{
-        //    List<OrderItem> cartItems = CartHelper.GetCartItems(Request, Response, context);
-        //    decimal subtotal = CartHelper.GetSubtotal(cartItems);
+        [Authorize]
+        [HttpPost]
+        public IActionResult Index(CheckoutDto model)
+        {
+            List<OrderItem> cartItems = CartHelper.GetCartItems(Request, Response, context);
+            decimal subtotal = CartHelper.GetSubtotal(cartItems);
 
 
-        //    ViewBag.CartItems = cartItems;
-        //    ViewBag.ShippingFee = shippingFee;
-        //    ViewBag.Subtotal = subtotal;
-        //    ViewBag.Total = subtotal + shippingFee;
+            ViewBag.CartItems = cartItems;
+            ViewBag.ShippingFee = shippingFee;
+            ViewBag.Subtotal = subtotal;
+            ViewBag.Total = subtotal + shippingFee;
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(model);
-        //    }
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-        //    // Check if shopping cart is empty or not
-        //    if (cartItems.Count == 0)
-        //    {
-        //        ViewBag.ErrorMessage = "Your cart is empty";
-        //        return View(model);
-        //    }
-
-
-        //    TempData["DeliveryAddress"] = model.DeliveryAddress;
-        //    TempData["PaymentMethod"] = model.PaymentMethod;
+            // Check if shopping cart is empty or not
+            if (cartItems.Count == 0)
+            {
+                ViewBag.ErrorMessage = "Your cart is empty";
+                return View(model);
+            }
 
 
-        //    if (model.PaymentMethod == "paypal" || model.PaymentMethod == "credit_card")
-        //    {
-        //        return RedirectToAction("Index", "Checkout");
-        //    }
-
-        //    return RedirectToAction("Confirm");
-        //}
+            TempData["DeliveryAddress"] = model.DeliveryAddress;
+            TempData["PaymentMethod"] = model.PaymentMethod;
 
 
+            if (model.PaymentMethod == "paypal" || model.PaymentMethod == "credit_card")
+            {
+                return RedirectToAction("Index", "Checkout");
+            }
 
-        //public IActionResult Confirm()
-        //{
-        //    List<OrderItem> cartItems = CartHelper.GetCartItems(Request, Response, context);
-        //    decimal total = CartHelper.GetSubtotal(cartItems) + shippingFee;
-        //    int cartSize = 0;
-        //    foreach (var item in cartItems)
-        //    {
-        //        cartSize += item.Quantity;
-        //    }
+            return RedirectToAction("Confirm");
+        }
 
 
-        //    string deliveryAddress = TempData["DeliveryAddress"] as string ?? "";
-        //    string paymentMethod = TempData["PaymentMethod"] as string ?? "";
-        //    TempData.Keep();
+
+        public IActionResult Confirm()
+        {
+            List<OrderItem> cartItems = CartHelper.GetCartItems(Request, Response, context);
+            decimal total = CartHelper.GetSubtotal(cartItems) + shippingFee;
+            int cartSize = 0;
+            foreach (var item in cartItems)
+            {
+                cartSize += item.Quantity;
+            }
 
 
-        //    if (cartSize == 0 || deliveryAddress.Length == 0 || paymentMethod.Length == 0)
-        //    {
-        //        return RedirectToAction("Index", "Home");
-        //    }
-
-        //    ViewBag.DeliveryAddress = deliveryAddress;
-        //    ViewBag.PaymentMethod = paymentMethod;
-        //    ViewBag.Total = total;
-        //    ViewBag.CartSize = cartSize;
-
-        //    return View();
-        //}
+            string deliveryAddress = TempData["DeliveryAddress"] as string ?? "";
+            string paymentMethod = TempData["PaymentMethod"] as string ?? "";
+            TempData.Keep();
 
 
-        //[Authorize]
-        //[HttpPost]
-        //public async Task<IActionResult> Confirm(int any)
-        //{
-        //    var cartItems = CartHelper.GetCartItems(Request, Response, context);
+            if (cartSize == 0 || deliveryAddress.Length == 0 || paymentMethod.Length == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
-        //    string deliveryAddress = TempData["DeliveryAddress"] as string ?? "";
-        //    string paymentMethod = TempData["PaymentMethod"] as string ?? "";
-        //    TempData.Keep();
+            ViewBag.DeliveryAddress = deliveryAddress;
+            ViewBag.PaymentMethod = paymentMethod;
+            ViewBag.Total = total;
+            ViewBag.CartSize = cartSize;
 
-        //    if (cartItems.Count == 0 || deliveryAddress.Length == 0 || paymentMethod.Length == 0)
-        //    {
-        //        return RedirectToAction("Index", "Home");
-        //    }
-
-        //    var appUser = await userManager.GetUserAsync(User);
-        //    if (appUser == null)
-        //    {
-        //        return RedirectToAction("Index", "Home");
-        //    }
-
-        //    // save the order
-        //    var order = new Order
-        //    {
-        //        ClientId = appUser.Id,
-        //        Items = cartItems,
-        //        ShippingFee = shippingFee,
-        //        DeliveryAddress = deliveryAddress,
-        //        PaymentMethod = paymentMethod,
-        //        PaymentStatus = "pending",
-        //        PaymentDetails = "",
-        //        OrderStatus = "created",
-        //        CreatedAt = DateTime.Now,
-        //    };
-
-        //    context.Orders.Add(order);
-        //    context.SaveChanges();
+            return View();
+        }
 
 
-        //    // delete the shopping cart cookie
-        //    Response.Cookies.Delete("shopping_cart");
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Confirm(int any)
+        {
+            var cartItems = CartHelper.GetCartItems(Request, Response, context);
 
-        //    ViewBag.SuccessMessage = "Order created successfully";
+            string deliveryAddress = TempData["DeliveryAddress"] as string ?? "";
+            string paymentMethod = TempData["PaymentMethod"] as string ?? "";
+            TempData.Keep();
 
-        //    return View();
-        //}
+            if (cartItems.Count == 0 || deliveryAddress.Length == 0 || paymentMethod.Length == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var appUser = await userManager.GetUserAsync(User);
+            if (appUser == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            // save the order
+            var order = new Order
+            {
+                ClientId = appUser.Id,
+                Items = cartItems,
+                ShippingFee = shippingFee,
+                DeliveryAddress = deliveryAddress,
+                PaymentMethod = paymentMethod,
+                PaymentStatus = "pending",
+                PaymentDetails = "",
+                OrderStatus = "created",
+                CreatedAt = DateTime.Now,
+            };
+
+            context.Orders.Add(order);
+            context.SaveChanges();
+
+
+            // delete the shopping cart cookie
+            Response.Cookies.Delete("shopping_cart");
+
+            ViewBag.SuccessMessage = "Order created successfully";
+
+            return View();
+        }
     }
 }
